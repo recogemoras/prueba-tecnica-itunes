@@ -1,6 +1,5 @@
-## This is a test with iTunes API to obtain the folloring results:
+## This is a test with iTunes API to obtain the following results:
 
-Using itunes API
 
 - The 10 last released songs by Galantis
 
