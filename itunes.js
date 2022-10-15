@@ -1,11 +1,11 @@
 "use strict";
 
-const chargeNewSongsGalantis = async() =>{
+const newestGalantisSongs = async() =>{
     try{
-    const respuesta = await fetch("https://itunes.apple.com/search?term=galantis&media=music");        
-    const resultado = await respuesta.json();
-    let release_date = resultado.results.releaseDate;
-    let dataObject = resultado.results;
+    const response = await fetch("https://itunes.apple.com/search?term=galantis&media=music");        
+    const result = await response.json();
+    let release_date = result.results.releaseDate;
+    let dataObject = result.results;
         dataObject.sort( (a,b) =>{
             if(a.releaseDate == b.releaseDate){
                 return 0;
@@ -15,24 +15,24 @@ const chargeNewSongsGalantis = async() =>{
             }
             return -1;
         });
-        document.write("<b>Las últimas 10 canciones de Galantis:<br></b>");
+        document.write("<b>The 10 last released songs by Galantis:<br></b>");
     for (let i = 0; i < 10; i++) {
         release_date = (dataObject[i].releaseDate);
         document.write(dataObject[i].trackName); document.write("<br>");
     }
     } catch (e){
         console.log(e);
-        console.log("Error en API chargeNewSongsGalantis");
+        console.log("API call error - newestGalantisSongs");
     }
 }
-chargeNewSongsGalantis();
+newestGalantisSongs();
 
-const chargeNewSongsGaga = async() =>{
+const newestGagaSongs = async() =>{
     try{
-    const respuesta = await fetch("https://itunes.apple.com/search?term=lady+gaga&media=music");        
-    const resultado = await respuesta.json();
-    let release_date = resultado.results.releaseDate;
-    let dataObject = resultado.results;
+    const response = await fetch("https://itunes.apple.com/search?term=lady+gaga&media=music");        
+    const result = await response.json();
+    let release_date = result.results.releaseDate;
+    let dataObject = result.results;
         dataObject.sort( (a,b) =>{
             if(a.releaseDate == b.releaseDate){
                 return 0;
@@ -43,42 +43,42 @@ const chargeNewSongsGaga = async() =>{
             return -1;
         });
         document.write("<br>");
-        document.write("<b>Las últimas 10 canciones de Lady Gaga:<br></b>");
+        document.write("<b>The 10 last released songs by Lady Gaga:<br></b>");
     for (let i = 0; i < 10; i++) {
         release_date = (dataObject[i].releaseDate);
         document.write(dataObject[i].trackName); document.write("<br>");
     }
     } catch (e){
         console.log(e);
-        console.log("Error en API chargeNewSongsGaga");
+        console.log("API call error - newestGagaSongs");
     }
 }
-chargeNewSongsGaga();
+newestGagaSongs();
 
-const peace = async() =>{
+const titlesWithPeace = async() =>{
     try{
-    const respuesta = await fetch("https://itunes.apple.com/search?term=peace&limit=2000");        
-    const resultado = await respuesta.json();
-    let dataObject = resultado.results;
+    const response = await fetch("https://itunes.apple.com/search?term=peace&limit=2000");        
+    const result = await response.json();
+    let dataObject = result.results;
     document.write("<br>");
-    document.write("<b>30 resultados de la búsqueda peace:<br></b>");
+    document.write("<b>30 media results with the word 'peace' in the title:<br></b>");
         for (let i = 0; i < 30; i++) {
-            document.write(`La consulta ${[i+1]} es del artista <b>${dataObject[i].artistName}</b> y corresponde a un <b>${dataObject[i].wrapperType}</b>`); document.write("<br>");
+            document.write(`${[i+1]} from artist <b>${dataObject[i].artistName}</b> with media type <b>${dataObject[i].wrapperType}</b>`); document.write("<br>");
         }
     } catch (e){
         console.log(e);
-        console.log("Error en API peace");
+        console.log("API call error - titlesWithPeace");
     }
 }
-peace();
+titlesWithPeace();
 
-const adele = async() =>{
+const adelesReleases = async() =>{
     try{
-    const respuesta = await fetch("https://itunes.apple.com/search?term=adele&media=music&limit=200");        
-    const resultado = await respuesta.json();
-    let dataObject = resultado.results;
+    const response = await fetch("https://itunes.apple.com/search?term=adele&media=music&limit=200");        
+    const result = await response.json();
+    let dataObject = result.results;
     document.write("<br>");
-    document.write("<b>Los temas de Adele en 2021 son :<br></b>");
+    document.write("<b>All the songs released by Adele in the year 2021 are:<br></b>");
     for (let i = 0; i < dataObject.length; i++) {
         const element = dataObject[i];
         const date = element.releaseDate.substring(0,4)
@@ -90,42 +90,44 @@ const adele = async() =>{
 
     } catch (e){
         console.log(e);
-        console.log("Error en API adele");
+        console.log("API call error - adelesReleases");
     }
 }
+
+adelesReleases();
+
 // Por falta de conocimiento de la API no he podido encontrar la propiedad ratingIndex, éste es un simulacro del resultado:
-adele();
 
-const podcast = async() =>{
+const bestRatingIndexPodcasts = async() =>{
     try{
-    const respuesta = await fetch("https://itunes.apple.com/search?term=podcast&ratingIndex&limit=10");        
-    const resultado = await respuesta.json();
-    let dataObject = resultado.results;
+    const response = await fetch("https://itunes.apple.com/search?term=podcast&ratingIndex&limit=10");        
+    const result = await response.json();
+    let dataObject = result.results;
     document.write("<br>");
-    document.write("<b>Los 10 podcast mejor valorados son :<br></b>");
+    document.write("<b>The 10 podcasts with the best rating index are:<br></b>");
     for (let i = 0; i < 10; i++) {
         document.write(dataObject[i].trackName); document.write("<br>");
     }
     } catch (e){
         console.log(e);
-        console.log("Error en API podcast");
+        console.log("API call error - bestRatingIndexPodcasts");
     }
 }
-podcast();
+bestRatingIndexPodcasts();
 
-const peliculas = async() =>{
+const bestRatingIndexMovies = async() =>{
     try{
-    const respuesta = await fetch("https://itunes.apple.com/search?term=movies&ratingIndex&limit=10");        
-    const resultado = await respuesta.json();
-    let dataObject = resultado.results;
+    const response = await fetch("https://itunes.apple.com/search?term=movies&ratingIndex&limit=10");        
+    const result = await response.json();
+    let dataObject = result.results;
     document.write("<br>");
-    document.write("<b>Las 10 películas mejor valoradas son :<br></b>");
+    document.write("<b>The 10 movies with the best rating index are:<br></b>");
     for (let i = 0; i < 10; i++) {
         document.write(dataObject[i].trackName); document.write("<br>");
     }
     } catch (e){
         console.log(e);
-        console.log("Error en API peliculas");
+        console.log("API call error - bestRatingIndexMovies");
     }
 }
-peliculas();
+bestRatingIndexMovies();
