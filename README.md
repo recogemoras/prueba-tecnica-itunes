@@ -1,4 +1,4 @@
-##This is a test with iTunes API to obtain the folloring results:
+## This is a test with iTunes API to obtain the folloring results:
 
 Using itunes API
 
@@ -8,7 +8,7 @@ Using itunes API
 
 - Search for 30 media types with the word “Peace” in the title and extract their artist name and media type.
 
-# All the songs released by Adele in the year 2021.
+- All the songs released by Adele in the year 2021.
 
 - The 10 podcasts and movies with the best rating index.
 
