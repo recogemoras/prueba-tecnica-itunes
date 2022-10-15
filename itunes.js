@@ -124,7 +124,8 @@ const bestRatingIndexMovies = async () => {
         document.write("<br>");
         document.write("<b>The 10 movies with the best rating index are:<br></b>");
         for (let i = 0; i < 10; i++) {
-            document.write('- ' + dataObject[i].trackName);                          document.write("<br>");
+            document.write('- ' + dataObject[i].trackName);
+            document.write("<br>");
         }
     } catch (e) {
         console.log(e);
